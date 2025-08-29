@@ -1230,6 +1230,7 @@ from .llms.llamafile.chat.transformation import LlamafileChatConfig
 from .llms.litellm_proxy.chat.transformation import LiteLLMProxyChatConfig
 from .llms.vllm.completion.transformation import VLLMConfig
 from .llms.deepseek.chat.transformation import DeepSeekChatConfig
+from .llms.alibaba.chat.transformation import AlibabaChatConfig
 from .llms.lm_studio.chat.transformation import LMStudioChatConfig
 from .llms.lm_studio.embed.transformation import LmStudioEmbeddingConfig
 from .llms.nscale.chat.transformation import NscaleConfig
