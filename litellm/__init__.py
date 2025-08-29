@@ -504,6 +504,7 @@ watsonx_models: Set = set()
 gemini_models: Set = set()
 xai_models: Set = set()
 deepseek_models: Set = set()
+alibaba_models: Set = set()
 azure_ai_models: Set = set()
 jina_ai_models: Set = set()
 voyage_models: Set = set()
@@ -670,6 +671,8 @@ def add_known_models():
             xai_models.add(key)
         elif value.get("litellm_provider") == "deepseek":
             deepseek_models.add(key)
+        elif value.get("litellm_provider") == "alibaba":
+            alibaba_models.add(key)
         elif value.get("litellm_provider") == "meta_llama":
             llama_models.add(key)
         elif value.get("litellm_provider") == "nscale":
@@ -870,6 +873,7 @@ models_by_provider: dict = {
     "text-completion-codestral": text_completion_codestral_models,
     "xai": xai_models,
     "deepseek": deepseek_models,
+    "alibaba": alibaba_models,
     "mistral": mistral_chat_models,
     "azure_ai": azure_ai_models,
     "voyage": voyage_models,
