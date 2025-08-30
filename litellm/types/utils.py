@@ -2353,7 +2353,6 @@ class LlmProviders(str, Enum):
     OCI = "oci"
     AUTO_ROUTER = "auto_router"
     VERCEL_AI_GATEWAY = "vercel_ai_gateway"
-    ALIBABA = "alibaba"
     DOTPROMPT = "dotprompt"
 
 # Create a set of all provider values for quick lookup
