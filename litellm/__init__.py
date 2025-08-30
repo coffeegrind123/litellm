@@ -539,6 +539,7 @@ moonshot_models: Set = set()
 v0_models: Set = set()
 morph_models: Set = set()
 lambda_ai_models: Set = set()
+alibaba_models: Set = set()
 hyperbolic_models: Set = set()
 recraft_models: Set = set()
 cometapi_models: Set = set()
@@ -739,6 +740,8 @@ def add_known_models():
             morph_models.add(key)
         elif value.get("litellm_provider") == "lambda_ai":
             lambda_ai_models.add(key)
+        elif value.get("litellm_provider") == "alibaba":
+            alibaba_models.add(key)
         elif value.get("litellm_provider") == "hyperbolic":
             hyperbolic_models.add(key)
         elif value.get("litellm_provider") == "recraft":
@@ -835,6 +838,7 @@ model_list = list(
     | v0_models
     | morph_models
     | lambda_ai_models
+    | alibaba_models
     | recraft_models
     | cometapi_models
     | oci_models

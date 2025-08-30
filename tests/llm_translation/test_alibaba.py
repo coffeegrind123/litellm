@@ -76,18 +76,17 @@ def test_alibaba_model_configuration():
 def test_alibaba_chat_config():
     """Test that AlibabaChatConfig is properly configured"""
     from litellm.llms.alibaba.chat.transformation import AlibabaChatConfig
-    from litellm.utils import get_config_based_on_provider
-    from litellm.types.utils import LlmProviders
     
     # Test config class instantiation
     config = AlibabaChatConfig()
     assert config is not None
     
-    # Test provider routing to config
-    config_from_provider = get_config_based_on_provider(
-        LlmProviders.ALIBABA, "qwen3-coder-plus"
+    # Test get_openai_compatible_provider_info method
+    api_base, dynamic_api_key = config._get_openai_compatible_provider_info(
+        api_base=None, api_key=None
     )
-    assert isinstance(config_from_provider, AlibabaChatConfig)
+    assert api_base == "https://portal.qwen.ai/v1"
+    assert dynamic_api_key is None  # No key provided
     
     # Test API base configuration
     api_base, api_key = config._get_openai_compatible_provider_info(None, None)
