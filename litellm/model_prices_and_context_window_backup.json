@@ -21033,7 +21033,7 @@
         "metadata": {
             "notes": "DALL-E 2 via AI/ML API - Reliable text-to-image generation"
         }
-    }
+  },
   "alibaba/qwen3-coder-plus": {
     "max_tokens": 131072,
     "max_input_tokens": 131072,
