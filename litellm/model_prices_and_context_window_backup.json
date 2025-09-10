@@ -7992,8 +7992,8 @@
         "max_pdf_size_mb": 30,
         "input_cost_per_audio_token": 1e-06,
         "input_cost_per_token": 3e-07,
-        "output_cost_per_token": 2.5e-06,
-        "output_cost_per_reasoning_token": 2.5e-06,
+        "output_cost_per_token": 3e-05,
+        "output_cost_per_reasoning_token": 3e-05,
         "output_cost_per_image": 0.039,
         "litellm_provider": "gemini",
         "mode": "chat",
@@ -8356,8 +8356,8 @@
         "max_pdf_size_mb": 30,
         "input_cost_per_audio_token": 1e-06,
         "input_cost_per_token": 3e-07,
-        "output_cost_per_token": 2.5e-06,
-        "output_cost_per_reasoning_token": 2.5e-06,
+        "output_cost_per_token": 3e-05,
+        "output_cost_per_reasoning_token": 3e-05,
         "output_cost_per_image": 0.039,
         "litellm_provider": "vertex_ai-language-models",
         "mode": "chat",
@@ -13123,6 +13123,7 @@
         "mode": "chat",
         "supports_response_schema": true,
         "supports_tool_choice": true,
+        "supports_function_calling": true,
         "supports_reasoning": true
     },
     "openai.gpt-oss-120b-1:0": {
@@ -13135,6 +13136,7 @@
         "mode": "chat",
         "supports_response_schema": true,
         "supports_tool_choice": true,
+        "supports_function_calling": true,
         "supports_reasoning": true
     },
     "anthropic.claude-opus-4-1-20250805-v1:0": {
@@ -13876,136 +13878,6 @@
         "output_cost_per_second": 0.00972,
         "litellm_provider": "bedrock",
         "mode": "chat"
-    },
-    "anthropic.claude-v2": {
-        "max_tokens": 8191,
-        "max_input_tokens": 100000,
-        "max_output_tokens": 8191,
-        "input_cost_per_token": 8e-06,
-        "output_cost_per_token": 2.4e-05,
-        "litellm_provider": "bedrock",
-        "mode": "chat",
-        "supports_tool_choice": true
-    },
-    "bedrock/us-east-1/anthropic.claude-v2": {
-        "max_tokens": 8191,
-        "max_input_tokens": 100000,
-        "max_output_tokens": 8191,
-        "input_cost_per_token": 8e-06,
-        "output_cost_per_token": 2.4e-05,
-        "litellm_provider": "bedrock",
-        "mode": "chat",
-        "supports_tool_choice": true
-    },
-    "bedrock/us-west-2/anthropic.claude-v2": {
-        "max_tokens": 8191,
-        "max_input_tokens": 100000,
-        "max_output_tokens": 8191,
-        "input_cost_per_token": 8e-06,
-        "output_cost_per_token": 2.4e-05,
-        "litellm_provider": "bedrock",
-        "mode": "chat",
-        "supports_tool_choice": true
-    },
-    "bedrock/ap-northeast-1/anthropic.claude-v2": {
-        "max_tokens": 8191,
-        "max_input_tokens": 100000,
-        "max_output_tokens": 8191,
-        "input_cost_per_token": 8e-06,
-        "output_cost_per_token": 2.4e-05,
-        "litellm_provider": "bedrock",
-        "mode": "chat",
-        "supports_tool_choice": true
-    },
-    "bedrock/ap-northeast-1/1-month-commitment/anthropic.claude-v2": {
-        "max_tokens": 8191,
-        "max_input_tokens": 100000,
-        "max_output_tokens": 8191,
-        "input_cost_per_second": 0.0455,
-        "output_cost_per_second": 0.0455,
-        "litellm_provider": "bedrock",
-        "mode": "chat",
-        "supports_tool_choice": true
-    },
-    "bedrock/ap-northeast-1/6-month-commitment/anthropic.claude-v2": {
-        "max_tokens": 8191,
-        "max_input_tokens": 100000,
-        "max_output_tokens": 8191,
-        "input_cost_per_second": 0.02527,
-        "output_cost_per_second": 0.02527,
-        "litellm_provider": "bedrock",
-        "mode": "chat",
-        "supports_tool_choice": true
-    },
-    "bedrock/eu-central-1/anthropic.claude-v2": {
-        "max_tokens": 8191,
-        "max_input_tokens": 100000,
-        "max_output_tokens": 8191,
-        "input_cost_per_token": 8e-06,
-        "output_cost_per_token": 2.4e-05,
-        "litellm_provider": "bedrock",
-        "mode": "chat",
-        "supports_tool_choice": true
-    },
-    "bedrock/eu-central-1/1-month-commitment/anthropic.claude-v2": {
-        "max_tokens": 8191,
-        "max_input_tokens": 100000,
-        "max_output_tokens": 8191,
-        "input_cost_per_second": 0.0415,
-        "output_cost_per_second": 0.0415,
-        "litellm_provider": "bedrock",
-        "mode": "chat",
-        "supports_tool_choice": true
-    },
-    "bedrock/eu-central-1/6-month-commitment/anthropic.claude-v2": {
-        "max_tokens": 8191,
-        "max_input_tokens": 100000,
-        "max_output_tokens": 8191,
-        "input_cost_per_second": 0.02305,
-        "output_cost_per_second": 0.02305,
-        "litellm_provider": "bedrock",
-        "mode": "chat",
-        "supports_tool_choice": true
-    },
-    "bedrock/us-east-1/1-month-commitment/anthropic.claude-v2": {
-        "max_tokens": 8191,
-        "max_input_tokens": 100000,
-        "max_output_tokens": 8191,
-        "input_cost_per_second": 0.0175,
-        "output_cost_per_second": 0.0175,
-        "litellm_provider": "bedrock",
-        "mode": "chat",
-        "supports_tool_choice": true
-    },
-    "bedrock/us-east-1/6-month-commitment/anthropic.claude-v2": {
-        "max_tokens": 8191,
-        "max_input_tokens": 100000,
-        "max_output_tokens": 8191,
-        "input_cost_per_second": 0.00972,
-        "output_cost_per_second": 0.00972,
-        "litellm_provider": "bedrock",
-        "mode": "chat",
-        "supports_tool_choice": true
-    },
-    "bedrock/us-west-2/1-month-commitment/anthropic.claude-v2": {
-        "max_tokens": 8191,
-        "max_input_tokens": 100000,
-        "max_output_tokens": 8191,
-        "input_cost_per_second": 0.0175,
-        "output_cost_per_second": 0.0175,
-        "litellm_provider": "bedrock",
-        "mode": "chat",
-        "supports_tool_choice": true
-    },
-    "bedrock/us-west-2/6-month-commitment/anthropic.claude-v2": {
-        "max_tokens": 8191,
-        "max_input_tokens": 100000,
-        "max_output_tokens": 8191,
-        "input_cost_per_second": 0.00972,
-        "output_cost_per_second": 0.00972,
-        "litellm_provider": "bedrock",
-        "mode": "chat",
-        "supports_tool_choice": true
     },
     "anthropic.claude-v2:1": {
         "max_tokens": 8191,
@@ -15245,7 +15117,7 @@
         "mode": "chat",
         "source": "https://www.together.ai/models/gpt-oss-120b"
     },
-    "together_ai/OpenAI/gpt-oss-20B": {
+    "together_ai/openai/gpt-oss-20b": {
         "input_cost_per_token": 5e-08,
         "output_cost_per_token": 2e-07,
         "max_input_tokens": 128000,
@@ -19958,6 +19830,38 @@
         "supports_system_messages": true,
         "supports_tool_choice": false
     },
+    "heroku/claude-4-sonnet": {
+        "max_tokens": 8192,
+        "litellm_provider": "heroku",
+        "mode": "chat",
+        "supports_function_calling": true,
+        "supports_system_messages": true,
+        "supports_tool_choice": true
+    },
+    "heroku/claude-3-7-sonnet": {
+        "max_tokens": 8192,
+        "litellm_provider": "heroku",
+        "mode": "chat",
+        "supports_function_calling": true,
+        "supports_system_messages": true,
+        "supports_tool_choice": true
+    },
+    "heroku/claude-3-5-sonnet-latest": {
+        "max_tokens": 8192,
+        "litellm_provider": "heroku",
+        "mode": "chat",
+        "supports_function_calling": true,
+        "supports_system_messages": true,
+        "supports_tool_choice": true
+    },
+    "heroku/claude-3-5-haiku": {
+        "max_tokens": 4096,
+        "litellm_provider": "heroku",
+        "mode": "chat",
+        "supports_function_calling": true,
+        "supports_system_messages": true,
+        "supports_tool_choice": true
+    },
     "vercel_ai_gateway/alibaba/qwen3-coder": {
         "max_tokens": 262144,
         "input_cost_per_token": 4e-07,
@@ -21046,5 +20950,65 @@
     "supports_tool_choice": true,
     "supports_reasoning": true,
     "source": "https://portal.qwen.ai/"
-  }
+    },
+    "doubao-embedding-large": {
+        "max_tokens": 4096,
+        "max_input_tokens": 4096,
+        "output_vector_size": 2048,
+        "input_cost_per_token": 0.0,
+        "output_cost_per_token": 0.0,
+        "litellm_provider": "volcengine",
+        "mode": "embedding",
+        "metadata": {
+            "notes": "Volcengine Doubao embedding model - large version with 2048 dimensions"
+        }
+    },
+    "doubao-embedding-large-text-250515": {
+        "max_tokens": 4096,
+        "max_input_tokens": 4096,
+        "output_vector_size": 2048,
+        "input_cost_per_token": 0.0,
+        "output_cost_per_token": 0.0,
+        "litellm_provider": "volcengine",
+        "mode": "embedding",
+        "metadata": {
+            "notes": "Volcengine Doubao embedding model - text-250515 version with 2048 dimensions"
+        }
+    },
+    "doubao-embedding-large-text-240915": {
+        "max_tokens": 4096,
+        "max_input_tokens": 4096,
+        "output_vector_size": 4096,
+        "input_cost_per_token": 0.0,
+        "output_cost_per_token": 0.0,
+        "litellm_provider": "volcengine",
+        "mode": "embedding",
+        "metadata": {
+            "notes": "Volcengine Doubao embedding model - text-240915 version with 4096 dimensions"
+        }
+    },
+    "doubao-embedding": {
+        "max_tokens": 4096,
+        "max_input_tokens": 4096,
+        "output_vector_size": 2560,
+        "input_cost_per_token": 0.0,
+        "output_cost_per_token": 0.0,
+        "litellm_provider": "volcengine",
+        "mode": "embedding",
+        "metadata": {
+            "notes": "Volcengine Doubao embedding model - standard version with 2560 dimensions"
+        }
+    },
+    "doubao-embedding-text-240715": {
+        "max_tokens": 4096,
+        "max_input_tokens": 4096,
+        "output_vector_size": 2560,
+        "input_cost_per_token": 0.0,
+        "output_cost_per_token": 0.0,
+        "litellm_provider": "volcengine",
+        "mode": "embedding",
+        "metadata": {
+            "notes": "Volcengine Doubao embedding model - text-240715 version with 2560 dimensions"
+        }
+    }
 }

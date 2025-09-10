@@ -346,6 +346,35 @@ def handle_key_type(data: GenerateKeyRequest, data_json: dict) -> dict:
         data_json["allowed_routes"] = ["info_routes"]
     return data_json
 
+async def validate_team_id_used_in_service_account_request(
+    team_id: Optional[str],
+    prisma_client: Optional[PrismaClient],
+):
+    """
+    Validate team_id is used in the request body for generating a service account key
+    """
+    if team_id is None:
+        raise HTTPException(
+            status_code=400,
+            detail="team_id is required for service account keys. Please specify `team_id` in the request body.",
+        )
+    
+    if prisma_client is None:
+        raise HTTPException(
+            status_code=400,
+            detail="prisma_client is required for service account keys. Please specify `prisma_client` in the request body.",
+        )
+    
+    # check if team_id exists in the database
+    team = await prisma_client.db.litellm_teamtable.find_unique(
+        where={"team_id": team_id},
+    )
+    if team is None:
+        raise HTTPException(
+            status_code=400,
+            detail="team_id does not exist in the database. Please specify a valid `team_id` in the request body.",
+        )
+    return True
 
 async def _common_key_generation_helper(  # noqa: PLR0915
     data: GenerateKeyRequest,
@@ -372,9 +401,9 @@ async def _common_key_generation_helper(  # noqa: PLR0915
         and data.metadata.get("service_account_id") is not None
         and data.team_id is None
     ):
-        raise HTTPException(
-            status_code=400,
-            detail="team_id is required for service account keys. Please specify `team_id` in the request body.",
+        await validate_team_id_used_in_service_account_request(
+            team_id=data.team_id,
+            prisma_client=prisma_client,
         )
 
     # check if user set default key/generate params on config.yaml
@@ -444,7 +473,7 @@ async def _common_key_generation_helper(  # noqa: PLR0915
 
         data = apply_enterprise_key_management_params(data, team_table)
     except Exception as e:
-        verbose_proxy_logger.info(
+        verbose_proxy_logger.debug(
             "litellm.proxy.proxy_server.generate_key_fn(): Enterprise key management params not applied - {}".format(
                 str(e)
             )
@@ -754,6 +783,11 @@ async def generate_service_account_key_fn(
         prisma_client,
         user_api_key_cache,
         user_custom_key_generate,
+    )
+
+    await validate_team_id_used_in_service_account_request(
+        team_id=data.team_id,
+        prisma_client=prisma_client,
     )
 
     verbose_proxy_logger.debug("entered /key/generate")
@@ -1970,7 +2004,7 @@ async def _rotate_master_key(
     # 2. process model table
     if models:
         decrypted_models = proxy_config.decrypt_model_list_from_db(new_models=models)
-        verbose_proxy_logger.info(
+        verbose_proxy_logger.debug(
             "ABLE TO DECRYPT MODELS - len(decrypted_models): %s", len(decrypted_models)
         )
         new_models = []
@@ -1984,9 +2018,9 @@ async def _rotate_master_key(
             )
             if new_model:
                 new_models.append(jsonify_object(new_model.model_dump()))
-        verbose_proxy_logger.info("Resetting proxy model table")
+        verbose_proxy_logger.debug("Resetting proxy model table")
         await prisma_client.db.litellm_proxymodeltable.delete_many()
-        verbose_proxy_logger.info("Creating %s models", len(new_models))
+        verbose_proxy_logger.debug("Creating %s models", len(new_models))
         await prisma_client.db.litellm_proxymodeltable.create_many(
             data=new_models,
         )
